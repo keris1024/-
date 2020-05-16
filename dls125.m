@@ -1,0 +1,12 @@
+asmInfo = NET.addAssembly('Newport.DLS.CommandInterface');
+mydls = CommandInterfaceDLS.DLS();
+code = mydls.OpenInstrument('COM5')%去看app里是com几
+%[code SN] = mydls.SN_Get          %获取控制器sn码
+%[code VE]= mydls.VE               %获取控制器版本信息
+%[code AC_GET]=mydls.AC_Get        %获取平移台加速度mm/s2
+[code AC_Set]=mydls.AC_Set(15)      %设置平移台加速度
+[code AC_GET]=mydls.AC_Get
+%[code Move_Relative]=mydls.PR_Set(-5)      %按方向移动多少，+号往120mm去，-号往0走
+%home=30
+%[code Move_Postion]=mydls.PA_Set(home)     %移动到平移台的某个位置，严格按照0~120mm输入
+postion=mydls.PA_Get
